@@ -12,7 +12,7 @@ const filterTemplate = (filterName, filterItems, selectedFilters = []) => {
                 <img src="./src/images/arrowDown.svg" alt="flèche" />
             </button>
             
-            <div class="bottom-container absolute overflow-y-hidden flex flex-col h-0 max-h-56 left-0 right-0 bg-white rounded-b-xl top-full m-auto z-10 p-0">
+            <div class="bottom-container absolute overflow-y-hidden flex flex-col h-0 left-0 right-0 bg-white rounded-b-xl top-full m-auto z-10 p-0">
                 <div class="px-6">
                     <div class="border border-solid border-[#cbcbcb] relative mb-4 rounded-[2px] py-2 pl-2 pr-8 box-border w-full">
                         <input type="text" class="search-bar block w-full box-border focus:outline-none" />
@@ -26,7 +26,7 @@ const filterTemplate = (filterName, filterItems, selectedFilters = []) => {
                     <div class="cursor-pointer px-6 bg-[#FFD15B] flex flex-col">${htmlSelectedFilters.join('')}</div>
                 </div>
 
-                <div class="overflow-y-scroll no-scrollbar px-6">
+                <div class="overflow-y-scroll no-scrollbar px-6 max-h-32">
                     <div id="${filterName}-search-items" class="cursor-pointer">${items.join('')}</div>
                 </div>
             </div>

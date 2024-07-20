@@ -9,7 +9,6 @@ class Filter {
         this.items = []
         this.title = title
         this.data = recipes
-        this.filteredData = recipes
         this.recipeContext = recipeContext
     }
 
@@ -17,19 +16,26 @@ class Filter {
         this.container.innerHTML = ''
     }
 
+    //permet de faire l'affichage des boutons filtre
     display = () => {
+        //on tri les filtres
         this.sort()
         // ajoute le html
-        this.container.appendChild(filterTemplate(this.title, this.items))
-
+        this.container.appendChild(filterTemplate(this.title, this.items, this.selectedFilters))
+        //ajoute les listeners à chaque filtre
         this.registerListeners()
     }
 
+    //permet de trier les filtres par ordre alphabétique
     sort = () => {
+        //localeCompare sert à prendre en compte les accents et ne pas les mettre à la fin
         this.items.sort((a, b) => a.localeCompare(b))
     }
     
+    //permet de faire la recherche dans la liste de filtre
     search = (e) => {
+        //initialItems correspond à la liste des filtres avant la recherche en cours
+        //toUpperCase pour harmoniser les valeurs sans se préoccuper des majuscules / minuscules 
         this.items = this.initialItems.filter(item => item.toUpperCase().includes(e.target.value.toUpperCase()))
         this.refreshSearchItems()
         this.registerListeners()
