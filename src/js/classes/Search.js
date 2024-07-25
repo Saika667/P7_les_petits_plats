@@ -14,12 +14,13 @@ class Search {
             this.recipeContext.recipes = filteredRecipes
             return
         }
-        //return
+
+        const regex = new RegExp(this.searchValue, 'i');
         this.recipeContext.recipes = filteredRecipes.filter((recipe) => {
-            return recipe.name.toUpperCase().includes(this.searchValue.toUpperCase())
-                || recipe.description.toUpperCase().includes(this.searchValue.toUpperCase())
-                || recipe.ingredients.find(ingredient => ingredient.ingredient.toUpperCase().includes(this.searchValue.toUpperCase()))
-        })
+            return recipe.name.match(regex)
+                || recipe.description.match(regex)
+                || recipe.ingredients.some(ingredient => ingredient.ingredient.match(regex));
+        });
         this.recipeContext.refreshRecipes()
         this.recipeContext.updateFilters()
     }
