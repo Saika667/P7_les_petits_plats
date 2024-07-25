@@ -14,17 +14,18 @@ class Search {
             this.recipeContext.recipes = filteredRecipes
             return
         }
-        //return
+        
+        const regex = new RegExp(this.searchValue, 'i');
         const tmpRecipes = []
-        for (let i = 0; i < filteredRecipes.length - 1; i++) {
+        for (let i = 0; i < filteredRecipes.length; i++) {
             const recipe = filteredRecipes[i]
-            if (recipe.name.toUpperCase().includes(this.searchValue.toUpperCase())) {
+            if (recipe.name.match(regex)) {
                 tmpRecipes.push(recipe)
-            } else if (recipe.description.toUpperCase().includes(this.searchValue.toUpperCase())) {
+            } else if (recipe.description.match(regex)) {
                 tmpRecipes.push(recipe)
             } else {
-                for (let j = 0; j < recipe.ingredients.length - 1; j++) {
-                    if (recipe.ingredients[j].ingredient.toUpperCase().includes(this.searchValue.toUpperCase())) {
+                for (let j = 0; j < recipe.ingredients.length; j++) {
+                    if (recipe.ingredients[j].ingredient.match(regex)) {
                         tmpRecipes.push(recipe)
                         break;
                     }
@@ -34,12 +35,6 @@ class Search {
 
         this.recipeContext.recipes = tmpRecipes
     
-
-        // this.recipeContext.recipes = filteredRecipes.filter((recipe) => {
-        //     return recipe.name.toUpperCase().includes(this.searchValue.toUpperCase())
-        //         || recipe.description.toUpperCase().includes(this.searchValue.toUpperCase())
-        //         || recipe.ingredients.find(ingredient => ingredient.ingredient.toUpperCase().includes(this.searchValue.toUpperCase()))
-        // })
         this.recipeContext.refreshRecipes()
         this.recipeContext.updateFilters()
     }
