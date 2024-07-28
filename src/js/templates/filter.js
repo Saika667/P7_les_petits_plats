@@ -9,15 +9,15 @@ const filterTemplate = (filterName, filterItems, selectedFilters = []) => {
         <div id="${filterName}" class="flex flex-col relative bg-white min-w-52 rounded-xl py-4 px-6 mr-20 max-h-64 h-fit">
             <button class="filter flex items-center justify-between">
                 <span class="font-medium">${filterName}</span>
-                <img src="./src/images/arrowDown.svg" alt="flèche" />
+                <img src="./src/images/arrowDown.svg" alt="flèche">
             </button>
             
             <div class="bottom-container absolute overflow-y-hidden flex flex-col h-0 left-0 right-0 bg-white rounded-b-xl top-full m-auto z-10 p-0">
                 <div class="px-6">
                     <div class="border border-solid border-[#cbcbcb] relative mb-4 rounded-[2px] py-2 pl-2 pr-8 box-border w-full">
-                        <input type="text" class="search-bar block w-full box-border focus:outline-none" />
+                        <input type="text" class="search-bar block w-full box-border focus:outline-none">
                         <button class="absolute top-0 bottom-0 right-3">
-                            <img src="./src/images/magnifiying.svg" alt="loupe"/>
+                            <img src="./src/images/magnifiying.svg" alt="loupe">
                         </button>
                     </div>
                 </div>
